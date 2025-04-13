@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TLW HOTEL</title>
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* Google Fonts Import */
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap");
+
+      /* Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-color: #ff6b00; /* Changed to orange */
+        --secondary-color: #000000; /* Changed to black */
+        --light-color: #f8f9fa;
+        --dark-color: #000000; /* Changed to black */
+        --gray-color: #6c757d;
+        --white-color: #e4d9d9;
+        --shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        --transition: all 0.3s ease;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+        color: var(
+          --light-color
+        ); /* Changed to light color for better contrast on dark backgrounds */
+        background-color: var(
+          --secondary-color
+        ); /* Changed to black background */
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        line-height: 1.3;
+        margin-bottom: 15px;
+        color: var(
+          --white-color
+        ); /* Ensure headings are visible on dark background */
+      }
+
+      p {
+        margin-bottom: 15px;
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--light-color);
+        transition: var(--transition);
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: var(--white-color);
+        padding: 12px 25px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: var(--transition);
+        font-weight: 500;
+        text-align: center;
+      }
+
+      .btn:hover {
+        background-color: #ff8c33; /* Lighter orange for hover */
+        transform: translateY(-3px);
+      }
+
+      .btn-large {
+        padding: 15px 30px;
+        font-size: 1.1rem;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .section-header h2 {
+        font-size: 2.5rem;
+        color: var(--primary-color); /* Changed to orange */
+        position: relative;
+        margin-bottom: 20px;
+      }
+
+      .underline {
+        width: 80px;
+        height: 4px;
+        background-color: var(--primary-color);
+        margin: 0 auto 20px;
+      }
+
+      section {
+        padding: 80px 0;
+        background-color: var(
+          --secondary-color
+        ); /* All sections have black background */
+      }
+
+      /* Header Styles */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: transparent;
+        transition: var(--transition);
+        padding: 20px 0;
+      }
+
+      header.sticky {
+        background-color: var(--secondary-color); /* Changed to black */
+        box-shadow: var(--shadow);
+        padding: 15px 0;
+      }
+
+      header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0;
+        color: var(--white-color);
+        transition: var(--transition);
+      }
+
+      .logo span {
+        color: var(--primary-color);
+      }
+
+      header.sticky .logo h1 {
+        color: var(
+          --white-color
+        ); /* Changed to white for visibility on black background */
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+      }
+
+      .menu {
+        display: flex;
+      }
+
+      .menu li {
+        margin: 0 15px;
+      }
+
+      .menu a {
+        color: var(--white-color);
+        font-weight: 500;
+        position: relative;
+        padding: 5px 0;
+      }
+
+      header.sticky .menu a {
+        color: var(
+          --white-color
+        ); /* Changed to white for visibility on black background */
+      }
+
+      .menu a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: var(--transition);
+      }
+
+      .menu a:hover::after,
+      .menu a.active::after {
+        width: 100%;
+      }
+
+      .menu a:hover,
+      .menu a.active {
+        color: var(--primary-color);
+      }
+
+      .menu-icon {
+        display: none;
+        font-size: 1.5rem;
+        color: var(--white-color);
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      header.sticky .menu-icon {
+        color: var(
+          --white-color
+        ); /* Changed to white for visibility on black background */
+      }
+
+      #menu-toggle {
+        display: none;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("tlw.jpg") no-repeat center center/cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding-top: 80px;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        padding: 0 20px;
+      }
+
+      .hero-content h1 {
+        font-size: 3.5rem;
+        color: var(--white-color);
+        margin-bottom: 20px;
+        animation: fadeInDown 1s ease;
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+        color: var(--light-color);
+        margin-bottom: 30px;
+        animation: fadeInUp 1s ease;
+      }
+
+      /* About Section */
+      .about-content {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+      }
+
+      .about-text {
+        flex: 1;
+      }
+
+      .about-image {
+        flex: 1;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        border: 2px solid var(--primary-color); /* Added orange border */
+      }
+
+      .about-image img {
+        transition: var(--transition);
+      }
+
+      .about-image:hover img {
+        transform: scale(1.05);
+      }
+
+      /* Rooms Section */
+      .rooms {
+        background-color: var(--secondary-color); /* Changed to black */
+      }
+
+      .room-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 30px;
+      }
+
+      .room-card {
+        background-color: #111111; /* Dark gray instead of white */
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        border: 1px solid #333; /* Added subtle border */
+      }
+
+      .room-card:hover {
+        transform: translateY(-10px);
+        border-color: var(
+          --primary-color
+        ); /* Change border to orange on hover */
+      }
+
+      .room-image {
+        position: relative;
+        height: 250px;
+        overflow: hidden;
+      }
+
+      .room-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .room-card:hover .room-image img {
+        transform: scale(1.1);
+      }
+
+      .price {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        background-color: var(--primary-color);
+        color: var(--white-color);
+        padding: 10px 15px;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 1.2rem;
+      }
+
+      .price span {
+        font-size: 0.9rem;
+        font-weight: 400;
+      }
+
+      .room-details {
+        padding: 20px;
+      }
+
+      .room-details h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: var(--primary-color); /* Changed to orange */
+      }
+
+      .amenities {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+      }
+
+      .amenities span {
+        margin-right: 15px;
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+        color: var(--light-color); /* Changed to light color for visibility */
+      }
+
+      .amenities i {
+        margin-right: 5px;
+        color: var(--primary-color);
+      }
+
+      /* Amenities Section */
+      .amenities-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .amenity-item {
+        text-align: center;
+        padding: 30px;
+        background-color: #111111; /* Dark gray instead of white */
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        border: 1px solid #333; /* Added subtle border */
+      }
+
+      .amenity-item:hover {
+        transform: translateY(-10px);
+        border-color: var(
+          --primary-color
+        ); /* Change border to orange on hover */
+      }
+
+      .amenity-icon {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+      }
+
+      .amenity-item h3 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        color: var(--primary-color); /* Changed to orange */
+      }
+
+      /* Gallery Section */
+      .gallery {
+        background-color: var(--secondary-color); /* Changed to black */
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 15px;
+      }
+
+      .gallery-item {
+        height: 250px;
+        overflow: hidden;
+        border-radius: 8px;
+        border: 2px solid transparent; /* Added for hover effect */
+        transition: var(--transition);
+      }
+
+      .gallery-item:hover {
+        border-color: var(--primary-color); /* Orange border on hover */
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.1);
+      }
+
+      /* Testimonials Section */
+      .testimonial-slider {
+        display: flex;
+        gap: 30px;
+        overflow-x: auto;
+        padding: 20px 0;
+        scrollbar-width: none;
+      }
+
+      .testimonial-slider::-webkit-scrollbar {
+        display: none;
+      }
+
+      .testimonial {
+        flex: 0 0 calc(50% - 15px);
+        background-color: #111111; /* Dark gray instead of white */
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        position: relative;
+        border: 1px solid #333; /* Added subtle border */
+      }
+
+      .quote {
+        font-size: 2rem;
+        color: var(--primary-color);
+        opacity: 0.5;
+        margin-bottom: 15px;
+      }
+
+      .testimonial p {
+        font-style: italic;
+        margin-bottom: 20px;
+        color: var(--light-color); /* Ensure text is visible */
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+      }
+
+      .author-image {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 15px;
+        border: 2px solid var(--primary-color); /* Added orange border */
+      }
+
+      .author-info h4 {
+        margin-bottom: 5px;
+        color: var(--primary-color); /* Changed to orange */
+      }
+
+      .rating {
+        color: var(--primary-color); /* Changed to orange */
+      }
+
+      /* Booking Section */
+      .booking {
+        background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+          url("https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80")
+            no-repeat center center/cover;
+        color: var(--white-color);
+      }
+
+      .booking .section-header h2,
+      .booking .section-header p {
+        color: var(--white-color);
+      }
+
+      .booking-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .booking-form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        background-color: rgba(0, 0, 0, 0.7); /* Darker background */
+        padding: 30px;
+        border-radius: 8px;
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--primary-color); /* Added orange border */
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group.full-width {
+        grid-column: 1 / -1;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--primary-color); /* Changed to orange */
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid var(--primary-color); /* Changed to orange */
+        border-radius: 4px;
+        background-color: rgba(0, 0, 0, 0.5); /* Darker background */
+        color: var(--white-color);
+        font-family: "Poppins", sans-serif;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #ff8c33; /* Lighter orange */
+        box-shadow: 0 0 5px rgba(255, 107, 0, 0.5); /* Orange glow */
+      }
+
+      .booking-form .btn {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: 100%;
+        max-width: 300px;
+      }
+
+      /* Contact Section */
+      .contact-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px;
+      }
+
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .info-item {
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .info-item i {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        margin-right: 15px;
+        margin-top: 5px;
+      }
+
+      .info-item h3 {
+        margin-bottom: 5px;
+        color: var(--primary-color); /* Changed to orange */
+      }
+
+      .social-media h3 {
+        margin-bottom: 15px;
+        color: var(--primary-color); /* Changed to orange */
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 15px;
+      }
+
+      .social-icons a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: #111111; /* Dark gray instead of light */
+        border-radius: 50%;
+        color: var(--primary-color); /* Changed to orange */
+        transition: var(--transition);
+        border: 1px solid var(--primary-color); /* Added orange border */
+      }
+
+      .social-icons a:hover {
+        background-color: var(--primary-color);
+        color: var(--white-color);
+        transform: translateY(-5px);
+      }
+
+      .contact-form {
+        background-color: #111111; /* Dark gray instead of white */
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--primary-color); /* Added orange border */
+      }
+
+      .contact-form form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .contact-form .form-group input,
+      .contact-form .form-group textarea {
+        background-color: rgba(0, 0, 0, 0.3); /* Darker background */
+        border: 1px solid var(--primary-color); /* Changed to orange */
+        color: var(--white-color);
+      }
+
+      .contact-form .form-group label {
+        color: var(--primary-color); /* Changed to orange */
+      }
+
+      /* Map Section */
+      .map {
+        padding: 0;
+        height: 450px;
+        filter: grayscale(100%) invert(92%) hue-rotate(180deg); /* Make map match black/orange theme */
+      }
+
+      /* Footer */
+      footer {
+        background-color: #000000; /* Pure black */
+        color: var(--light-color);
+        padding: 80px 0 0;
+        border-top: 3px solid var(--primary-color); /* Added orange border top */
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-bottom: 50px;
+      }
+
+      .footer-column h3 {
+        color: var(--primary-color); /* Changed to orange */
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-column h3::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background-color: var(--primary-color);
+      }
+
+      .footer-logo h2 {
+        color: var(--white-color);
+        font-size: 1.8rem;
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .footer-social a {
+        color: var(--light-color);
+        font-size: 1.2rem;
+        transition: var(--transition);
+      }
+
+      .footer-social a:hover {
+        color: var(--primary-color);
+        transform: translateY(-3px);
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: var(--light-color);
+        transition: var(--transition);
+      }
+
+      .footer-links a:hover {
+        color: var(--primary-color);
+        padding-left: 5px;
+      }
+
+      .footer-contact li {
+        display: flex;
+        margin-bottom: 15px;
+      }
+
+      .footer-contact i {
+        color: var(--primary-color);
+        margin-right: 10px;
+        margin-top: 5px;
+      }
+
+      .newsletter-form {
+        display: flex;
+        margin-top: 20px;
+      }
+
+      .newsletter-form input {
+        flex: 1;
+        padding: 12px 15px;
+        border: none;
+        border-radius: 4px 0 0 4px;
+        font-family: "Poppins", sans-serif;
+        background-color: #111111; /* Dark gray instead of white */
+        color: var(--white-color);
+        border: 1px solid var(--primary-color); /* Added orange border */
+        border-right: none;
+      }
+
+      .newsletter-form button {
+        background-color: var(--primary-color);
+        color: var(--white-color);
+        border: none;
+        padding: 0 20px;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .newsletter-form button:hover {
+        background-color: #ff8c33; /* Lighter orange */
+        color: var(--white-color);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 107, 0, 0.3); /* Orange border with opacity */
+        padding: 20px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .footer-bottom-links a {
+        color: var(--light-color);
+        margin-left: 20px;
+        transition: var(--transition);
+      }
+
+      .footer-bottom-links a:hover {
+        color: var(--primary-color);
+      }
+
+      /* Animations */
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive Styles */
+      @media screen and (max-width: 992px) {
+        .section-header h2 {
+          font-size: 2rem;
+        }
+
+        .hero-content h1 {
+          font-size: 2.8rem;
+        }
+
+        .about-content {
+          flex-direction: column;
+        }
+
+        .testimonial {
+          flex: 0 0 100%;
+        }
+
+        .contact-container {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        header .container {
+          position: relative;
+        }
+
+        .menu-icon {
+          display: block;
+        }
+
+        .menu {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background-color: var(--secondary-color); /* Changed to black */
+          flex-direction: column;
+          align-items: center;
+          padding: 20px 0;
+          box-shadow: var(--shadow);
+          transform: translateY(-150%);
+          opacity: 0;
+          transition: var(--transition);
+          z-index: 999;
+          border-top: 2px solid var(--primary-color); /* Added orange border */
+          border-bottom: 2px solid var(--primary-color); /* Added orange border */
+        }
+
+        .menu li {
+          margin: 15px 0;
+        }
+
+        .menu a {
+          color: var(--white-color); /* Changed to white for visibility */
+        }
+
+        #menu-toggle:checked ~ .menu {
+          transform: translateY(0);
+          opacity: 1;
+        }
+
+        .book-now {
+          display: none;
+        }
+
+        .hero-content h1 {
+          font-size: 2.2rem;
+        }
+
+        .room-cards {
+          grid-template-columns: 1fr;
+        }
+
+        .booking-form {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .footer-bottom-links {
+          margin-top: 10px;
+        }
+
+        .footer-bottom-links a {
+          margin: 0 10px;
+        }
+      }
+
+      @media screen and (max-width: 576px) {
+        .section-header h2 {
+          font-size: 1.8rem;
+        }
+
+        .hero-content h1 {
+          font-size: 1.8rem;
+        }
+
+        .hero-content p {
+          font-size: 1rem;
+        }
+
+        .amenities-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-form form {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Reset thanh công cụ */
+      header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+      }
+
+      nav {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
+
+      .menu {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .menu li {
+        margin: 0 20px;
+      }
+
+      .menu a {
+        color: #ff6b00;
+        font-size: 16px;
+        font-weight: 500;
+        text-decoration: none;
+        padding: 10px 0;
+        position: relative;
+        display: block;
+      }
+
+      .menu a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #ff6b00;
+        transition: width 0.3s ease;
+      }
+
+      .menu a:hover::after,
+      .menu a.active::after {
+        width: 100%;
+      }
+
+      .menu a:hover,
+      .menu a.active {
+        color: #ff6b00;
+      }
+
+      /* Hiệu ứng chuyển trang */
+      body {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      body.fade-in {
+        opacity: 1;
+      }
+
+      .page-transition {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        z-index: 9999;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s ease;
+      }
+
+      .page-transition.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      /* Responsive */
+      @media screen and (max-width: 768px) {
+        header .container {
+          flex-direction: column;
+          padding: 10px;
+        }
+
+        .logo {
+          margin-bottom: 10px;
+        }
+
+        .menu {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .menu li {
+          margin: 10px 0;
+        }
+
+        .book-now {
+          margin-top: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Phần tử hiệu ứng chuyển trang -->
+    <div class="page-transition"></div>
+
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="logo">
+          <h1>TLW<span>HOTEL</span></h1>
+        </div>
+        <nav>
+          <input type="checkbox" id="menu-toggle" />
+          <label for="menu-toggle" class="menu-icon">
+            <i class="fas fa-bars"></i>
+          </label>
+          <ul class="menu">
+            <li><a href="#home" class="active">Trang chủ</a></li>
+            <li>
+              <a href="about.html" class="page-link">Phòng và Dịch Vụ</a>
+            </li>
+            <li><a href="#amenities">Trải nghiệm</a></li>
+            <li><a href="#contact">Liên Hệ</a></li>
+          </ul>
+        </nav>
+        <div class="book-now">
+          <a href="#booking" class="btn">Đặt Phòng</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>TLW HOTEL</h1>
+        <p>Trải nghiệm đỉnh cao – Nghỉ dưỡng hoàn hảo.</p>
+        <a href="#booking" class="btn btn-large">ĐẶT PHÒNG NGAY</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="section-header">
+          <h2>Welcome to TLW hotel</h2>
+          <div class="underline"></div>
+        </div>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              TLW Hotel – Điểm đến lý tưởng giữa lòng thành phố Bình Dương.
+              Chúng tôi tự hào mang đến trải nghiệm nghỉ dưỡng cao cấp với thiết
+              kế hiện đại, tiện nghi chuẩn 5 sao và đội ngũ phục vụ tận tâm.
+              Từng chi tiết đều được chăm chút để tạo nên cảm giác thoải mái và
+              sang trọng tuyệt đối.
+            </p>
+            <p>
+              Với bề dày hơn 20 năm trong ngành khách sạn, TLW Hotel không ngừng
+              nâng tầm dịch vụ nhằm mang đến những kỳ nghỉ không chỉ đáng nhớ mà
+              còn khó quên.
+            </p>
+            <a href="#" class="btn">Khám Phá ngay</a>
+          </div>
+          <div class="about-image">
+            <img src="ksan1.jpg" alt="Hotel Lobby" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms" class="rooms">
+      <div class="container">
+        <div class="section-header">
+          <h2>Các Loại Phòng Sang Trọng Của Chúng Tôi</h2>
+          <div class="underline"></div>
+          <p>Chọn từ danh sách chỗ ở cao cấp của chúng tôi</p>
+        </div>
+        <div class="room-cards">
+          <div class="room-card">
+            <div class="room-image">
+              <img src="p1.webp" alt="Deluxe Room" />
+              <div class="price">4.900.000đ<span>/đêm</span></div>
+            </div>
+            <div class="room-details">
+              <h3>Phòng Deluxe</h3>
+              <div class="amenities">
+                <span><i class="fas fa-bed"></i> Giường King</span>
+                <span><i class="fas fa-user-friends"></i> 2 khách</span>
+                <span><i class="fas fa-wifi"></i> WiFi miễn phí</span>
+              </div>
+              <p>
+                Phòng Deluxe rộng rãi mang đến sự thoải mái tuyệt đối với nội
+                thất hiện đại và thiết kế tinh tế, phù hợp cho kỳ nghỉ thư giãn
+                hoặc công tác chuyên nghiệp.
+              </p>
+              <a href="#booking" class="btn"> Đặt ngay</a>
+            </div>
+          </div>
+          <div class="room-card">
+            <div class="room-image">
+              <img src="p2.webp" alt="Executive Suite" />
+              <div class="price">7.200.000đ<span>/đêm</span></div>
+            </div>
+            <div class="room-details">
+              <h3>Suite Điều Hành</h3>
+              <div class="amenities">
+                <span><i class="fas fa-bed"></i> Giường King</span>
+                <span><i class="fas fa-user-friends"></i> 2–3 khách </span>
+                <span><i class="fas fa-bath"></i> Bồn tắm Jacuzzi</span>
+              </div>
+              <p>
+                Tận hưởng sự sang trọng với không gian riêng biệt, phòng khách
+                độc lập và tiện nghi đẳng cấp – hoàn hảo cho kỳ nghỉ thư thái
+                hoặc tiếp khách quan trọng.
+              </p>
+              <a href="#booking" class="btn"> Đặt ngay</a>
+            </div>
+          </div>
+          <div class="room-card">
+            <div class="room-image">
+              <img src="p3.webp" alt="Presidential Suite" />
+              <div class="price">11.900.000<span>/đêm</span></div>
+            </div>
+            <div class="room-details">
+              <h3>Phòng Tổng Thống</h3>
+              <div class="amenities">
+                <span><i class="fas fa-bed"></i> Giường King</span>
+                <span><i class="fas fa-user-friends"></i> 4 khách</span>
+                <span
+                  ><i class="fas fa-concierge-bell"></i> Dịch vụ quản gia</span
+                >
+              </div>
+              <p>
+                Phòng cao cấp nhất tại TLW Hotel, nổi bật với tầm nhìn toàn
+                cảnh, không gian dùng bữa riêng tư và dịch vụ cá nhân hóa đỉnh
+                cao.
+              </p>
+              <a href="#booking" class="btn"> Đặt ngay</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section id="amenities" class="amenities">
+      <div class="container">
+        <div class="section-header">
+          <h2>Tiện nghi khách sạn</h2>
+          <div class="underline"></div>
+          <p>Khám phá các tiện nghi đặc biệt mà chúng tôi cung cấp</p>
+        </div>
+        <div class="amenities-grid">
+          <div class="amenity-item">
+            <div class="amenity-icon">
+              <i class="fas fa-swimming-pool"></i>
+            </div>
+            <h3>Hồ bơi vô cực</h3>
+            <p>
+              Tận hưởng hồ bơi vô cực trên sân thượng với tầm nhìn toàn cảnh
+              thành phố.
+            </p>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon">
+              <i class="fas fa-spa"></i>
+            </div>
+            <h3>Spa cao cấp</h3>
+            <p>
+              Thư giãn và tái tạo năng lượng với các liệu trình spa đẳng cấp.
+            </p>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon">
+              <i class="fas fa-utensils"></i>
+            </div>
+            <h3>Ẩm thực tinh hoa</h3>
+            <p>
+              Thưởng thức ẩm thực đặc sắc tại những nhà hàng đạt giải thưởng
+              danh giá.
+            </p>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon">
+              <i class="fas fa-dumbbell"></i>
+            </div>
+            <h3>Trung tâm thể hình</h3>
+            <p>Giữ gìn vóc dáng với hệ thống thiết bị hiện đại chuẩn quốc tế</p>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon">
+              <i class="fas fa-wifi"></i>
+            </div>
+            <h3>WiFi tốc độ cao</h3>
+            <p>
+              Kết nối không giới hạn với internet tốc độ cao hoàn toàn miễn phí.
+            </p>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-icon">
+              <i class="fas fa-car"></i>
+            </div>
+            <h3>Dịch vụ đỗ xe</h3>
+            <p>
+              Trải nghiệm sự tiện lợi với dịch vụ đỗ xe có nhân viên hỗ trợ tận
+              nơi.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+      <div class="container">
+        <div class="section-header">
+          <h2>Thư viện ảnh</h2>
+          <div class="underline"></div>
+          <p>
+            Hãy tham quan trực quan khu bất động sản sang trọng của chúng tôi
+          </p>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="anh1.jpg" alt="Hotel Exterior" />
+          </div>
+          <div class="gallery-item">
+            <img src="anh2.jpg" alt="Hotel Lobby" />
+          </div>
+          <div class="gallery-item">
+            <img src="anh3.jpg" alt="Hotel Restaurant" />
+          </div>
+          <div class="gallery-item">
+            <img src="anh4.jpg" alt="Hotel Pool" />
+          </div>
+          <div class="gallery-item">
+            <img src="anh5.jpg" alt="Hotel Spa" />
+          </div>
+          <div class="gallery-item">
+            <img src="anh6.jpg" alt="Hotel Gym" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+
+    <section class="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <h2>Lời đánh giá của khách hàng</h2>
+          <div class="underline"></div>
+          <p>Những gì khách của chúng tôi nói về trải nghiệm của họ</p>
+        </div>
+
+        <div class="testimonial-slider">
+          <div class="testimonial">
+            <div class="quote">
+              <i class="fas fa-quote-left"></i>
+            </div>
+            <p>
+              Dịch vụ tại TLW vượt quá mọi mong đợi của tôi. Nhân viên chu đáo,
+              phòng sạch sẽ và tiện nghi tuyệt vời. Tôi chắc chắn sẽ quay lại!
+            </p>
+            <div class="testimonial-author">
+              <div class="author-image">
+                <img src="chandung.jpg" alt="Sarah Johnson" />
+              </div>
+              <div class="author-info">
+                <h4>Hồng Trúc</h4>
+                <div class="rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="quote">
+              <i class="fas fa-quote-left"></i>
+            </div>
+            <p>
+              Gia đình tôi và tôi đã có một kỳ nghỉ tuyệt vời tại TLW hotel. Các
+              phòng rộng rãi, hồ bơi tuyệt vời, và nhà hàng phục vụ đồ ăn ngon.
+              Chúng tôi không thể chờ đợi để quay lại!
+            </p>
+            <div class="testimonial-author">
+              <div class="author-image">
+                <img src="chandung2.jpg" alt="Lâm Đẹp Trai" />
+              </div>
+              <div class="author-info">
+                <h4>Lâm Đẹp Trai</h4>
+                <div class="rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="booking">
+      <div class="container">
+        <div class="section-header">
+          <h2>Đặt phòng của bạn</h2>
+          <div class="underline"></div>
+          <p>Đặt phòng của bạn để có một trải nghiệm khó quên</p>
+        </div>
+        <div class="booking-container">
+          <form class="booking-form">
+            <div class="form-group">
+              <label for="check-in">Ngày đến</label>
+              <input type="date" id="check-in" required />
+            </div>
+            <div class="form-group">
+              <label for="check-out">Ngày đi</label>
+              <input type="date" id="check-out" required />
+            </div>
+            <div class="form-group">
+              <label for="guests">Số lượng người</label>
+              <select id="guests" required>
+                <option value="1">1 người</option>
+                <option value="2" selected>2 người</option>
+                <option value="3">3 người</option>
+                <option value="4">4 người</option>
+                <option value="5">5+ người</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="room-type">Loại Phòng</label>
+              <select id="room-type" required>
+                <option value="deluxe">Phòng Deluxe</option>
+                <option value="executive">Phòng Suite</option>
+                <option value="presidential">Phòng Tổng Thống</option>
+              </select>
+            </div>
+            <div class="form-group full-width">
+              <label for="special-requests">Yêu Cầu(ghi chú)</label>
+              <textarea id="special-requests" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-large">
+              Kiểm Tra Tình Hình Phòng Trống
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2>Liên hệ với chúng tôi</h2>
+          <div class="underline"></div>
+          <p>Chúng tôi ở đây để hỗ trợ bạn với bất kỳ thắc mắc nào</p>
+        </div>
+        <div class="contact-container">
+          <div class="contact-info">
+            <div class="info-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <h3>Địa Chỉ:</h3>
+                <p>123 Hiệp Thành, Thủ Dầu Một<br />Bình Dương</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-phone-alt"></i>
+              <div>
+                <h3>HotLine</h3>
+                <p>0398111111</p>
+                <p>0793111111</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <h3>Email</h3>
+                <p>tlw.luxury@gmail.com</p>
+                <p>tlw.123@gmail.com</p>
+              </div>
+            </div>
+            <div class="social-media">
+              <h3>Follow Us</h3>
+              <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form">
+            <form>
+              <div class="form-group">
+                <label for="name">Họ Và Tên</label>
+                <input type="text" id="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email của bạn</label>
+                <input type="email" id="email" required />
+              </div>
+              <div class="form-group">
+                <label for="subject">Vấn Đề</label>
+                <input type="text" id="subject" required />
+              </div>
+              <div class="form-group full-width">
+                <label for="message">Lời nhắn của bạn</label>
+                <textarea id="message" rows="5" required></textarea>
+              </div>
+              <button type="submit" class="btn">Gửi</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Map Section -->
+    <section class="map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.656805780567!2d106.68582131411602!3d10.84108559227664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529be0a3e5e8f%3A0x64857a0797c7033e!2zQmluaCBExrDGoW5n!5e0!3m2!1svi!2s!4v1616928012345!5m2!1svi!2s"
+        width="100%"
+        height="450"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <div class="footer-logo">
+              <h2>TLW<span>HOTEL</span></h2>
+            </div>
+            <p>
+              Trải nghiệm sự sang trọng và thoải mái hơn bao giờ hết tại điểm
+              đến khách sạn cao cấp của chúng tôi.
+            </p>
+            <div class="footer-social">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3>Liên kết nhanh</h3>
+            <ul class="footer-links">
+              <li><a href="#home" class="active">Trang chủ</a></li>
+              <li>
+                <a href="ttphong.html" class="page-link">Phòng và Dịch Vụ</a>
+              </li>
+              <li><a href="#amenities">Trải nghiệm</a></li>
+              <li><a href="#contact">Liên Hệ</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Thông tin liên lạc</h3>
+            <ul class="footer-contact">
+              <li>
+                <i class="fas fa-map-marker-alt"></i> 123 Hiệp Thành, Thủ Dầu
+                Một, Bình Dương
+              </li>
+              <li><i class="fas fa-phone-alt"></i> 039855242237</li>
+              <li><i class="fas fa-envelope"></i> tlw.luxury@gmail.com</li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Tin Tức</h3>
+            <p>
+              Đăng ký nhận bản tin của chúng tôi để nhận các ưu đãi và cập nhật
+              đặc biệt..
+            </p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="địa chỉ email" required />
+              <button type="submit"><i class="fas fa-paper-plane"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript cho hiệu ứng chuyển trang -->
+    <script>
+      // Hiệu ứng fade-in
+      document.addEventListener("DOMContentLoaded", function () {
+        document.body.classList.add("fade-in");
+      });
+
+      // Hiệu ứng chuyển trang khi nhấp vào liên kết
+      document.querySelectorAll(".page-link").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const target = this.getAttribute("href");
+          const transition = document.querySelector(".page-transition");
+
+          // Kích hoạt hiệu ứng chuyển trang
+          transition.classList.add("active");
+          setTimeout(function () {
+            window.location.href = target;
+          }, 700); // thời gian chuyển trang
+        });
+      });
+    </script>
+  </body>
+</html>
