@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TLW HOTEL - Trải Nghiệm Đặc Biệt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* Reset CSS */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        line-height: 1.6;
+        color: #ff6b00;
+        background-color: #000;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Header Styles */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 20px 0;
+        border-bottom: 1px solid #ff6b00;
+      }
+
+      header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo a {
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+
+      .logo-text {
+        color: #ff6b00;
+        font-family: "Playfair Display", serif;
+      }
+
+      .logo-hotel {
+        color: #ff6b00;
+        font-family: "Playfair Display", serif;
+      }
+
+      .menu {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 800px;
+      }
+
+      .menu li {
+        margin: 0 20px;
+        white-space: nowrap;
+      }
+
+      .menu li a {
+        color: #ff6b00;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 10px 15px;
+        position: relative;
+        transition: all 0.3s ease;
+        display: block;
+      }
+
+      .menu li.active a,
+      .menu li a:hover {
+        color: #ff6b00;
+        background-color: rgba(255, 107, 0, 0.2);
+        border-radius: 4px;
+      }
+
+      .menu li.active a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #ff6b00;
+      }
+
+      .btn-book {
+        background-color: #ff6b00;
+        color: #000;
+        padding: 10px 25px;
+        border-radius: 5px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .btn-book:hover {
+        background-color: #ff6b00;
+        transform: translateY(-2px);
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 70vh;
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.7)
+          ),
+          url("spa.jpg");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #ff6b00;
+        margin-top: 80px;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        padding: 0 20px;
+      }
+
+      .hero h1 {
+        font-size: 60px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        font-family: "Playfair Display", serif;
+        color: #ff6b00;
+      }
+
+      .tagline {
+        font-size: 24px;
+        margin-bottom: 40px;
+        color: #ff6b00;
+      }
+
+      /* Section Styles */
+      section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .section-title h2 {
+        font-size: 36px;
+        color: #ff6b00;
+        font-family: "Playfair Display", serif;
+        margin-bottom: 15px;
+      }
+
+      .section-title p {
+        font-size: 18px;
+        color: #ff6b00;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .divider {
+        width: 80px;
+        height: 3px;
+        background-color: #ff6b00;
+        margin: 0 auto 20px;
+      }
+
+      /* Experience Categories */
+      .experience-categories {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-bottom: 50px;
+      }
+
+      .category-btn {
+        padding: 10px 20px;
+        background-color: transparent;
+        border: 1px solid #ff6b00;
+        color: #ff6b00;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .category-btn:hover,
+      .category-btn.active {
+        background-color: #ff6b00;
+        color: #000;
+      }
+
+      /* Experience Grid */
+      .experience-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 30px;
+      }
+
+      .experience-card {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(255, 107, 0, 0.1);
+        transition: all 0.5s ease;
+        position: relative;
+        border: 1px solid #ff6b00;
+        height: 400px;
+        opacity: 1;
+      }
+
+      .experience-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(255, 107, 0, 0.2);
+      }
+
+      .experience-image {
+        height: 250px;
+        overflow: hidden;
+      }
+
+      .experience-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .experience-card:hover .experience-image img {
+        transform: scale(1.1);
+      }
+
+      .experience-content {
+        padding: 20px;
+        background-color: #000;
+      }
+
+      .experience-content h3 {
+        font-size: 22px;
+        margin-bottom: 10px;
+        color: #ff6b00;
+      }
+
+      .experience-content p {
+        color: #ff6b00;
+        margin-bottom: 15px;
+      }
+
+      .experience-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #ff6b00;
+        font-size: 14px;
+      }
+
+      .experience-meta span {
+        display: flex;
+        align-items: center;
+      }
+
+      .experience-meta i {
+        margin-right: 5px;
+      }
+
+      /* Featured Experience */
+      .featured-experience {
+        background-color: #0a0a0a;
+        padding: 100px 0;
+        border-top: 1px solid #ff6b00;
+        border-bottom: 1px solid #ff6b00;
+      }
+
+      .featured-content {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+      }
+
+      .featured-image {
+        flex: 1;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(255, 107, 0, 0.2);
+        border: 2px solid #ff6b00;
+      }
+
+      .featured-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .featured-text {
+        flex: 1;
+      }
+
+      .featured-text h2 {
+        font-size: 36px;
+        color: #ff6b00;
+        font-family: "Playfair Display", serif;
+        margin-bottom: 20px;
+      }
+
+      .featured-text p {
+        margin-bottom: 20px;
+        color: #ff6b00;
+        font-size: 16px;
+        line-height: 1.8;
+      }
+
+      .featured-highlights {
+        margin: 30px 0;
+      }
+
+      .highlight-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .highlight-icon {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 107, 0, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        color: #ff6b00;
+        font-size: 18px;
+      }
+
+      .highlight-text h4 {
+        color: #ff6b00;
+        margin-bottom: 5px;
+      }
+
+      .highlight-text p {
+        margin: 0;
+        font-size: 14px;
+      }
+
+      .btn-book-now {
+        display: inline-block;
+        background-color: #ff6b00;
+        color: #000;
+        padding: 12px 30px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        margin-top: 20px;
+      }
+
+      .btn-book-now:hover {
+        background-color: #ff6b00;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(255, 107, 0, 0.3);
+      }
+
+      /* Testimonials */
+      .testimonials {
+        background-color: #000;
+        padding: 80px 0;
+      }
+
+      .testimonial-slider {
+        display: flex;
+        overflow-x: auto;
+        gap: 30px;
+        padding: 20px 0;
+        scrollbar-width: none;
+      }
+
+      .testimonial-slider::-webkit-scrollbar {
+        display: none;
+      }
+
+      .testimonial-card {
+        flex: 0 0 400px;
+        background-color: #0a0a0a;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(255, 107, 0, 0.1);
+        border: 1px solid #ff6b00;
+      }
+
+      .testimonial-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .testimonial-image {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 15px;
+        border: 2px solid #ff6b00;
+      }
+
+      .testimonial-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .testimonial-info h4 {
+        color: #ff6b00;
+        margin-bottom: 5px;
+      }
+
+      .testimonial-info p {
+        color: #ff6b00;
+        font-size: 14px;
+      }
+
+      .testimonial-rating {
+        color: #ff6b00;
+        margin-bottom: 15px;
+      }
+
+      .testimonial-text {
+        color: #ff6b00;
+        font-style: italic;
+        line-height: 1.8;
+      }
+
+      /* CTA Section */
+      .cta {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.8),
+            rgba(0, 0, 0, 0.8)
+          ),
+          url("hboi.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        padding: 100px 0;
+        text-align: center;
+        border-top: 1px solid #ff6b00;
+      }
+
+      .cta h2 {
+        font-size: 36px;
+        color: #ff6b00;
+        font-family: "Playfair Display", serif;
+        margin-bottom: 20px;
+      }
+
+      .cta p {
+        color: #ff6b00;
+        font-size: 18px;
+        max-width: 700px;
+        margin: 0 auto 30px;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #000;
+        color: #ff6b00;
+        padding: 60px 0 20px;
+        border-top: 1px solid #ff6b00;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-info p {
+        margin: 10px 0;
+        color: #ff6b00;
+      }
+
+      .footer-logo {
+        margin-bottom: 20px;
+        font-size: 24px;
+      }
+
+      .footer-links h3,
+      .footer-newsletter h3 {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #fe6a00;
+      }
+
+      .footer-links ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links ul li a {
+        color: #ff6b00;
+        transition: all 0.3s ease;
+      }
+
+      .footer-links ul li a:hover {
+        color: #ff6b00;
+        padding-left: 5px;
+      }
+
+      .newsletter-form {
+        display: flex;
+        margin-top: 15px;
+      }
+
+      .newsletter-form input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ff6b00;
+        border-radius: 5px 0 0 5px;
+        background-color: #000;
+        color: #ff6b00;
+      }
+
+      .newsletter-form button {
+        background-color: #ff6b00;
+        color: #000;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .newsletter-form button:hover {
+        background-color: #ff6b00;
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid #ff6b00;
+        color: #ff6b00;
+      }
+
+      /* Hiệu ứng chuyển trang */
+      body {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      body.fade-in {
+        opacity: 1;
+      }
+
+      .page-transition {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        z-index: 9999;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s ease;
+      }
+
+      .page-transition.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      /* Notification */
+      .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: rgba(0, 0, 0, 0.9);
+        color: #ff6b00;
+        border: 2px solid #ff6b00;
+        border-radius: 8px;
+        padding: 15px 25px;
+        box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+        z-index: 9999;
+        transform: translateY(-100px);
+        opacity: 0;
+        transition: all 0.5s ease;
+        display: flex;
+        align-items: center;
+        max-width: 350px;
+      }
+
+      .notification.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .notification-icon {
+        margin-right: 15px;
+        font-size: 24px;
+        color: #ff6b00;
+      }
+
+      .notification-content {
+        flex: 1;
+      }
+
+      .notification-title {
+        font-weight: bold;
+        margin-bottom: 5px;
+        font-size: 16px;
+      }
+
+      .notification-message {
+        font-size: 14px;
+      }
+
+      /* Responsive */
+      @media (max-width: 992px) {
+        .featured-content {
+          flex-direction: column;
+        }
+
+        .featured-image,
+        .featured-text {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 40px;
+        }
+
+        .tagline {
+          font-size: 18px;
+        }
+
+        .menu {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .menu li {
+          margin: 10px 0;
+        }
+
+        .experience-grid {
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero h1 {
+          font-size: 32px;
+        }
+
+        .section-title h2 {
+          font-size: 28px;
+        }
+
+        .testimonial-card {
+          flex: 0 0 300px;
+        }
+      }
+
+      .experience-card.hidden {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      /* Modal Popup Styles */
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .modal.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal-content {
+        background-color: #111111;
+        border: 2px solid #ff6b00;
+        border-radius: 8px;
+        padding: 30px;
+        width: 90%;
+        max-width: 500px;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+        animation: modalFadeIn 0.5s ease forwards;
+      }
+
+      @keyframes modalFadeIn {
+        from {
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ff6b00;
+        padding-bottom: 15px;
+      }
+
+      .modal-title {
+        color: #ff6b00;
+        font-size: 1.5rem;
+        margin: 0;
+      }
+
+      .modal-close {
+        background: none;
+        border: none;
+        color: #ff6b00;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .modal-close:hover {
+        color: #ff8c33;
+        transform: scale(1.1);
+      }
+
+      .modal-body {
+        margin-bottom: 20px;
+      }
+
+      .modal-footer {
+        display: flex;
+        justify-content: flex-end;
+        border-top: 1px solid #ff6b00;
+        padding-top: 15px;
+      }
+
+      .modal-footer .btn {
+        margin-left: 10px;
+        background-color: #ff6b00;
+        color: #000;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .modal-footer .btn:hover {
+        background-color: #ff8c33;
+        transform: translateY(-2px);
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #ff6b00;
+        font-weight: 500;
+      }
+
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ff6b00;
+        border-radius: 5px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #ff6b00;
+        font-family: "Roboto", sans-serif;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: #ff8c33;
+        box-shadow: 0 0 5px rgba(255, 107, 0, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Phần tử hiệu ứng chuyển trang -->
+    <div class="page-transition"></div>
+
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="logo">
+          <a href="index.html" class="page-link">
+            <span class="logo-text">TLW</span
+            ><span class="logo-hotel">HOTEL</span>
+          </a>
+        </div>
+        <nav>
+          <ul class="menu">
+            <li><a href="index.html" class="page-link">Trang chủ</a></li>
+            <li><a href="about.html" class="page-link">Phòng và Dịch Vụ</a></li>
+            <li class="active"><a href="experience.html">Trải nghiệm</a></li>
+            <li><a href="contact.html" class="page-link">Liên Hệ</a></li>
+          </ul>
+        </nav>
+        <div class="booking-button">
+          <a href="#" class="btn-book" id="header-booking-btn">Đặt Phòng</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Trải Nghiệm Đặc Biệt</h1>
+        <p class="tagline">Khám phá những khoảnh khắc đáng nhớ tại TLW HOTEL</p>
+      </div>
+    </section>
+
+    <!-- Experience Categories -->
+    <section>
+      <div class="container">
+        <div class="section-title">
+          <h2>Khám Phá Trải Nghiệm</h2>
+          <div class="divider"></div>
+          <p>Tận hưởng những trải nghiệm độc đáo và đẳng cấp tại TLW HOTEL</p>
+        </div>
+
+        <div class="experience-categories">
+          <button class="category-btn active">Tất cả</button>
+          <button class="category-btn">Spa & Wellness</button>
+          <button class="category-btn">Ẩm thực</button>
+          <button class="category-btn">Giải trí</button>
+          <button class="category-btn">Tour du lịch</button>
+        </div>
+
+        <div class="experience-grid">
+          <div class="experience-card">
+            <div class="experience-image">
+              <img src="spa.jpg" alt="Spa & Wellness" />
+            </div>
+            <div class="experience-content">
+              <h3>Spa & Wellness</h3>
+              <p>
+                Thư giãn với các liệu pháp spa cao cấp và dịch vụ chăm sóc sức
+                khỏe chuyên nghiệp.
+              </p>
+              <div class="experience-meta">
+                <span><i class="fas fa-clock"></i> 60-120 phút</span>
+                <span><i class="fas fa-star"></i> 4.9/5</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="experience-card">
+            <div class="experience-image">
+              <img src="athucnhahang.jpg" alt="Ẩm Thực Đặc Sắc" />
+            </div>
+            <div class="experience-content">
+              <h3>Ẩm Thực Đặc Sắc</h3>
+              <p>
+                Khám phá hương vị ẩm thực đa dạng từ các đầu bếp hàng đầu tại
+                nhà hàng của chúng tôi.
+              </p>
+              <div class="experience-meta">
+                <span><i class="fas fa-utensils"></i> Nhà hàng 5 sao</span>
+                <span><i class="fas fa-star"></i> 4.8/5</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="experience-card">
+            <div class="experience-image">
+              <img src="hboi.jpg" alt="Hồ Bơi Vô Cực" />
+            </div>
+            <div class="experience-content">
+              <h3>Hồ Bơi Vô Cực</h3>
+              <p>
+                Thư giãn và ngắm nhìn toàn cảnh thành phố từ hồ bơi vô cực trên
+                tầng thượng.
+              </p>
+              <div class="experience-meta">
+                <span><i class="fas fa-swimming-pool"></i> Mở cửa 24/7</span>
+                <span><i class="fas fa-star"></i> 5.0/5</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="experience-card">
+            <div class="experience-image">
+              <img src="train2.jpg" alt="Phòng Tập Gym" />
+            </div>
+            <div class="experience-content">
+              <h3>Phòng Tập Gym</h3>
+              <p>
+                Duy trì lịch trình tập luyện của bạn với phòng gym hiện đại và
+                đầy đủ thiết bị.
+              </p>
+              <div class="experience-meta">
+                <span><i class="fas fa-dumbbell"></i> Mở cửa 24/7</span>
+                <span><i class="fas fa-star"></i> 4.7/5</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="experience-card">
+            <div class="experience-image">
+              <img src="train2.jpg" alt="Tour Du Lịch" />
+            </div>
+            <div class="experience-content">
+              <h3>Tour Du Lịch</h3>
+              <p>
+                Khám phá vẻ đẹp của Bình Dương với các tour du lịch được thiết
+                kế riêng cho khách hàng.
+              </p>
+              <div class="experience-meta">
+                <span><i class="fas fa-route"></i> Nửa ngày/Cả ngày</span>
+                <span><i class="fas fa-star"></i> 4.9/5</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="experience-card">
+            <div class="experience-image">
+              <img src="train3.jpg" alt="Phòng Hội Nghị" />
+            </div>
+            <div class="experience-content">
+              <h3>Phòng Hội Nghị</h3>
+              <p>
+                Tổ chức sự kiện, hội nghị với không gian chuyên nghiệp và trang
+                thiết bị hiện đại.
+              </p>
+              <div class="experience-meta">
+                <span><i class="fas fa-users"></i> Lên đến 200 người</span>
+                <span><i class="fas fa-star"></i> 4.8/5</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Experience -->
+    <section class="featured-experience">
+      <div class="container">
+        <div class="featured-content">
+          <div class="featured-image">
+            <img src="spa.jpg" alt="Spa & Wellness" />
+          </div>
+          <div class="featured-text">
+            <h2>Trải Nghiệm Spa & Wellness Đẳng Cấp</h2>
+            <p>
+              Tận hưởng những phút giây thư giãn tuyệt đối với dịch vụ spa cao
+              cấp tại TLW HOTEL. Chúng tôi mang đến cho bạn không gian yên tĩnh,
+              sang trọng cùng các liệu pháp chăm sóc sức khỏe và sắc đẹp được
+              thiết kế riêng cho từng nhu cầu.
+            </p>
+            <p>
+              Đội ngũ chuyên viên spa giàu kinh nghiệm của chúng tôi sẽ mang đến
+              cho bạn trải nghiệm thư giãn tuyệt vời nhất, giúp bạn tái tạo năng
+              lượng và cân bằng cơ thể.
+            </p>
+
+            <div class="featured-highlights">
+              <div class="highlight-item">
+                <div class="highlight-icon">
+                  <i class="fas fa-spa"></i>
+                </div>
+                <div class="highlight-text">
+                  <h4>Liệu Pháp Massage</h4>
+                  <p>Đa dạng các loại massage từ Thái, Bali đến Shiatsu</p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <div class="highlight-icon">
+                  <i class="fas fa-hot-tub"></i>
+                </div>
+                <div class="highlight-text">
+                  <h4>Phòng Xông Hơi</h4>
+                  <p>Xông hơi khô, xông hơi ướt với tinh dầu thảo mộc</p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <div class="highlight-icon">
+                  <i class="fas fa-leaf"></i>
+                </div>
+                <div class="highlight-text">
+                  <h4>Chăm Sóc Da</h4>
+                  <p>Các liệu pháp chăm sóc da mặt và toàn thân cao cấp</p>
+                </div>
+              </div>
+            </div>
+
+            <a href="#" class="btn-book-now" id="featured-booking-btn"
+              >Đặt Lịch Ngay</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+      <div class="container">
+        <div class="section-title">
+          <h2>Khách Hàng Nói Gì Về Chúng Tôi</h2>
+          <div class="divider"></div>
+          <p>
+            Những đánh giá chân thực từ khách hàng đã trải nghiệm dịch vụ tại
+            TLW HOTEL
+          </p>
+        </div>
+
+        <div class="testimonial-slider">
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-image">
+                <img src="cdungtt1.jpg" alt="Khách hàng" />
+              </div>
+              <div class="testimonial-info">
+                <h4>Nguyễn Văn An</h4>
+                <p>Khách hàng thường xuyên</p>
+              </div>
+            </div>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="testimonial-text">
+              "Dịch vụ spa tại TLW HOTEL thực sự tuyệt vời. Tôi đã thử liệu pháp
+              massage Thái và cảm thấy hoàn toàn thư giãn. Nhân viên chuyên
+              nghiệp và không gian rất yên tĩnh. Chắc chắn sẽ quay lại!"
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-image">
+                <img src="cdungtt2.jpg" alt="Khách hàng" />
+              </div>
+              <div class="testimonial-info">
+                <h4>Trần Thị Hoa</h4>
+                <p>Du khách</p>
+              </div>
+            </div>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="testimonial-text">
+              "Hồ bơi vô cực trên tầng thượng là điểm nhấn tuyệt vời của khách
+              sạn. Tôi đã có những giây phút thư giãn tuyệt vời khi ngắm hoàng
+              hôn từ đây. Nhân viên phục vụ chu đáo và đồ uống ngon tuyệt!"
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-image">
+                <img src="cdungtt3.jpg" alt="Khách hàng" />
+              </div>
+              <div class="testimonial-info">
+                <h4>Lê Minh Tuấn</h4>
+                <p>Doanh nhân</p>
+              </div>
+            </div>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="testimonial-text">
+              "Tôi đã tổ chức hội nghị kinh doanh tại TLW HOTEL và rất hài lòng
+              với dịch vụ. Phòng hội nghị được trang bị hiện đại, âm thanh ánh
+              sáng tuyệt vời. Đặc biệt, đội ngũ nhân viên hỗ trợ rất chuyên
+              nghiệp."
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+      <div class="container">
+        <h2>Sẵn sàng cho trải nghiệm đáng nhớ?</h2>
+        <p>
+          Đặt phòng ngay hôm nay để tận hưởng những trải nghiệm đẳng cấp tại TLW
+          HOTEL
+        </p>
+        <a href="#" class="btn-book-now" id="cta-booking-btn">ĐẶT PHÒNG NGAY</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-info">
+            <div class="footer-logo">
+              <span class="logo-text">TLW</span
+              ><span class="logo-hotel">HOTEL</span>
+            </div>
+            <p>Địa chỉ: 123 Hiệp Thành, Thủ Dầu Một, Bình Dương</p>
+            <p>Điện thoại: 039855242237</p>
+            <p>Email: tlw.luxury@gmail.com</p>
+          </div>
+          <div class="footer-links">
+            <h3>Liên kết nhanh</h3>
+            <ul>
+              <li><a href="index.html" class="page-link">Trang chủ</a></li>
+              <li>
+                <a href="about.html" class="page-link">Phòng và Dịch Vụ</a>
+              </li>
+              <li><a href="experience.html">Trải nghiệm</a></li>
+              <li><a href="contact.html" class="page-link">Liên Hệ</a></li>
+              <li><a href="#" class="booking-link">Đặt phòng</a></li>
+            </ul>
+          </div>
+          <div class="footer-newsletter">
+            <h3>Đăng ký nhận tin</h3>
+            <p>Nhận thông tin ưu đãi mới nhất từ chúng tôi</p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Email của bạn" />
+              <button type="submit">Đăng ký</button>
+            </form>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 TLW Hotel. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Container cho thông báo -->
+    <div id="notification-container"></div>
+
+    <!-- Modal Form Thông Tin Đặt Phòng -->
+    <div id="booking-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Thông Tin Đặt Phòng</h3>
+          <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="booking-form">
+            <div class="form-group">
+              <label for="fullname">Họ và tên</label>
+              <input type="text" id="fullname" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Số điện thoại</label>
+              <input type="tel" id="phone" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" required />
+            </div>
+            <div class="form-group">
+              <label for="check-in">Ngày nhận phòng</label>
+              <input type="date" id="check-in" required />
+            </div>
+            <div class="form-group">
+              <label for="check-out">Ngày trả phòng</label>
+              <input type="date" id="check-out" required />
+            </div>
+            <div class="form-group">
+              <label for="room-type">Loại phòng</label>
+              <select id="room-type" required>
+                <option value="">-- Chọn loại phòng --</option>
+                <option value="deluxe">Phòng Deluxe</option>
+                <option value="suite">Phòng Suite</option>
+                <option value="family">Phòng Gia đình</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="guests">Số lượng khách</label>
+              <select id="guests" required>
+                <option value="1">1 người</option>
+                <option value="2" selected>2 người</option>
+                <option value="3">3 người</option>
+                <option value="4">4 người</option>
+                <option value="5">5+ người</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="payment-method">Phương thức thanh toán</label>
+              <select id="payment-method" required>
+                <option value="">-- Chọn phương thức --</option>
+                <option value="credit-card">Thẻ tín dụng</option>
+                <option value="bank-transfer">Chuyển khoản ngân hàng</option>
+                <option value="cash">Tiền mặt khi nhận phòng</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="special-requests">Yêu cầu đặc biệt</label>
+              <input type="text" id="special-requests" />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn" id="cancel-booking">Hủy</button>
+          <button class="btn" id="confirm-booking">Xác nhận đặt phòng</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.body.classList.add("fade-in");
+
+        // Hàm hiển thị thông báo
+        function showNotification(title, message, icon = "check-circle") {
+          const notificationContainer = document.getElementById(
+            "notification-container"
+          );
+
+          // Tạo phần tử thông báo
+          const notification = document.createElement("div");
+          notification.className = "notification";
+
+          // Nội dung thông báo
+          notification.innerHTML = `
+          <div class="notification-icon">
+            <i class="fas fa-${icon}"></i>
+          </div>
+          <div class="notification-content">
+            <div class="notification-title">${title}</div>
+            <div class="notification-message">${message}</div>
+          </div>
+        `;
+
+          // Thêm vào container
+          notificationContainer.appendChild(notification);
+
+          // Hiển thị thông báo
+          setTimeout(() => {
+            notification.classList.add("show");
+          }, 100);
+
+          // Tự động ẩn sau 4 giây
+          setTimeout(() => {
+            notification.classList.remove("show");
+            setTimeout(() => {
+              notification.remove();
+            }, 500);
+          }, 4000);
+        }
+
+        // Xử lý hiệu ứng chuyển trang
+        document.querySelectorAll(".page-link").forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = this.getAttribute("href");
+            const transition = document.querySelector(".page-transition");
+            transition.classList.add("active");
+            setTimeout(function () {
+              window.location.href = target;
+            }, 700);
+          });
+        });
+
+        // Xử lý sự kiện cho các nút danh mục
+        document.querySelectorAll(".category-btn").forEach((button) => {
+          button.addEventListener("click", function () {
+            // Xóa class active từ tất cả các nút
+            document.querySelectorAll(".category-btn").forEach((btn) => {
+              btn.classList.remove("active");
+            });
+
+            // Thêm class active cho nút được nhấp
+            this.classList.add("active");
+
+            // Lấy danh mục được chọn
+            const category = this.textContent.trim();
+
+            // Lọc các thẻ experience-card dựa trên danh mục
+            const cards = document.querySelectorAll(".experience-card");
+            cards.forEach((card) => {
+              const cardTitle = card.querySelector("h3").textContent;
+
+              if (category === "Tất cả") {
+                card.style.display = "block"; // Hiển thị tất cả
+              } else if (
+                cardTitle.includes(category) ||
+                (category === "Spa & Wellness" && cardTitle.includes("Spa")) ||
+                (category === "Ẩm thực" && cardTitle.includes("Ẩm Thực")) ||
+                (category === "Giải trí" &&
+                  (cardTitle.includes("Hồ Bơi") ||
+                    cardTitle.includes("Phòng Tập"))) ||
+                (category === "Tour du lịch" && cardTitle.includes("Tour"))
+              ) {
+                card.style.display = "block"; // Hiển thị nếu phù hợp với danh mục
+              } else {
+                card.style.display = "none"; // Ẩn nếu không phù hợp
+              }
+            });
+
+            // Hiển thị thông báo
+            showNotification(
+              "Danh mục đã chọn",
+              `Đang hiển thị trải nghiệm: ${category}`,
+              "filter"
+            );
+          });
+        });
+
+        // Xử lý sự kiện cho form đăng ký nhận tin
+        const newsletterForm = document.querySelector(".newsletter-form");
+        if (newsletterForm) {
+          newsletterForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const emailInput = this.querySelector("input[type='email']");
+            if (emailInput.value.trim() !== "") {
+              showNotification(
+                "Đăng ký thành công!",
+                "Cảm ơn bạn đã đăng ký nhận tin từ TLW HOTEL.",
+                "envelope"
+              );
+              emailInput.value = "";
+            } else {
+              showNotification(
+                "Lỗi đăng ký",
+                "Vui lòng nhập địa chỉ email hợp lệ.",
+                "exclamation-circle"
+              );
+            }
+          });
+        }
+
+        // Modal booking form
+        const bookingModal = document.getElementById("booking-modal");
+        const modalClose = bookingModal.querySelector(".modal-close");
+        const cancelBtn = document.getElementById("cancel-booking");
+        const confirmBtn = document.getElementById("confirm-booking");
+
+        // Hiển thị modal khi nhấn nút đặt phòng
+        document
+          .querySelectorAll(
+            "#header-booking-btn, #featured-booking-btn, #cta-booking-btn, .booking-link"
+          )
+          .forEach((btn) => {
+            btn.addEventListener("click", function (e) {
+              e.preventDefault();
+              bookingModal.classList.add("show");
+
+              // Set default dates
+              const today = new Date();
+              const tomorrow = new Date(today);
+              tomorrow.setDate(tomorrow.getDate() + 1);
+
+              const checkIn = document.getElementById("check-in");
+              const checkOut = document.getElementById("check-out");
+
+              checkIn.valueAsDate = today;
+              checkOut.valueAsDate = tomorrow;
+            });
+          });
+
+        // Đóng modal
+        modalClose.addEventListener("click", function () {
+          bookingModal.classList.remove("show");
+        });
+
+        cancelBtn.addEventListener("click", function () {
+          bookingModal.classList.remove("show");
+        });
+
+        // Xử lý đặt phòng
+        confirmBtn.addEventListener("click", function () {
+          const form = document.getElementById("booking-form");
+          if (form.checkValidity()) {
+            bookingModal.classList.remove("show");
+            showNotification(
+              "Đặt phòng thành công!",
+              "Cảm ơn bạn đã đặt phòng tại TLW HOTEL. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.",
+              "check-circle"
+            );
+            form.reset();
+          } else {
+            form.reportValidity();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
